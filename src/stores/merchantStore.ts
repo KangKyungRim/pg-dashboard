@@ -29,7 +29,6 @@ export const useMerchantStore = create<MerchantStore>((set, get) => ({
 
     try {
       const res: MerchantDetailResponse = await fetchMerchantDetail(mchtCode);
-console.log(res)
       set({
         merchants: { ...merchants, [mchtCode]: res.data },
         loading: false,
