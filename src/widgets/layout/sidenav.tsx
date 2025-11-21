@@ -8,11 +8,12 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import { SidenavProps, SidenavType } from "@/types/ui";
 
-export function Sidenav({ brandImg, brandName, routes }) {
+export function Sidenav({ brandImg, brandName, routes }: SidenavProps) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
-  const sidenavTypes = {
+  const sidenavTypes: Record<SidenavType, string> = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
     white: "bg-white shadow-sm",
     transparent: "bg-transparent",
@@ -66,13 +67,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
-                      }
+                      color={isActive ? sidenavColor : undefined}
                       className="flex items-center gap-4 px-4 capitalize"
                       fullWidth
                     >
@@ -98,12 +93,6 @@ export function Sidenav({ brandImg, brandName, routes }) {
 Sidenav.defaultProps = {
   brandImg: "/img/logo-ct.png",
   brandName: "PG Dashboard",
-};
-
-Sidenav.propTypes = {
-  brandImg: PropTypes.string,
-  brandName: PropTypes.string,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 Sidenav.displayName = "/src/widgets/layout/sidnave.tsx";

@@ -9,8 +9,9 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { NavbarProps } from "@/types/ui";
 
-export function Navbar({ brandName, routes, action }) {
+export function Navbar({ brandName, routes, action }: NavbarProps) {
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
@@ -54,7 +55,7 @@ export function Navbar({ brandName, routes, action }) {
           </Typography>
         </Link>
         <div className="hidden lg:block">{navList}</div>
-        {React.cloneElement(action, {
+        {React.cloneElement(action as React.ReactElement, {
           className: "hidden lg:inline-block",
         })}
         <IconButton
@@ -73,7 +74,7 @@ export function Navbar({ brandName, routes, action }) {
       <Collapse open={openNav}>
         <div className="container mx-auto">
           {navList}
-          {React.cloneElement(action, {
+          {React.cloneElement(action as React.ReactElement, {
             className: "w-full block lg:hidden",
           })}
         </div>
@@ -94,12 +95,6 @@ Navbar.defaultProps = {
       </Button>
     </a>
   ),
-};
-
-Navbar.propTypes = {
-  brandName: PropTypes.string,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  action: PropTypes.node,
 };
 
 Navbar.displayName = "/src/widgets/layout/navbar.tsx";

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMerchantStore } from "@/stores/merchantStore";
 import Loader from "@/components/Loader";
 import BackButton from "@/components/BackButton";
@@ -11,10 +11,15 @@ import {
 import { ProfileInfoCard } from "@/widgets/cards";
 
 export function MerchantDetail() {
+  const navigator = useNavigate();
   const { mchtCode } = useParams<{ mchtCode: string }>();
   const { merchants, fetchMerchantDetail, loading, statusLabels } = useMerchantStore();
 
-  if (!mchtCode) return (() => alert("조회 가능한 가맹점이 존재하지 않습니다."));
+  if (!mchtCode) {
+    alert("조회 가능한 가맹점이 존재하지 않습니다.");
+    navigator(-1); 
+    return null;
+  }
   const merchant = merchants[mchtCode];
 
   useEffect(() => {

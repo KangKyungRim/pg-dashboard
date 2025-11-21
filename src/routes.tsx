@@ -1,12 +1,9 @@
 import {
   HomeIcon,
-  TableCellsIcon,
-  InformationCircleIcon,
-  UserCircleIcon,
   BanknotesIcon,
   BuildingStorefrontIcon
 } from "@heroicons/react/24/solid";
-import { Home, Payments, Merchants, MerchantDetail, Profile, Tables, Notifications } from "@/pages/dashboard";
+import { Home, Payments, Merchants, MerchantDetail } from "@/pages/dashboard";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -40,24 +37,6 @@ export const routes = [
         path: "/merchants/:mchtCode", 
         element: <MerchantDetail />,
         sideNavHidden: true
-      },
-      {
-        icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        icon: <TableCellsIcon {...icon} />,
-        name: "tables",
-        path: "/tables",
-        element: <Tables />,
-      },
-      {
-        icon: <InformationCircleIcon {...icon} />,
-        name: "notifications",
-        path: "/notifications",
-        element: <Notifications />,
       },
     ],
   },
