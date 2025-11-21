@@ -97,9 +97,7 @@ pg-dashboard/
   데이터 시각화가 직관적이고 용이합니다.
 
 ### 기타
-- **React Router v6**: 페이지 라우팅 및 URL 파라미터 관리 용이  
 - **Vite**: 빠른 개발 서버, 최적화된 빌드 속도 제공  
-- **Zustand**: API 데이터 처리와 상태 관리 분리  
 - **공용 컴포넌트화 (GenericTable, Pagination, Loader 등)**  
   재사용 가능하며 프로젝트 확장 시 유지보수 용이
 
